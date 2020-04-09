@@ -67,10 +67,11 @@ public class ObjectPool : MonoBehaviour
 
     public void SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
-        if(poolDictionary[tag].Count > 0 && !poolDictionary.ContainsKey(tag))
+        if(poolDictionary[tag].Count > 0 && poolDictionary.ContainsKey(tag))
         {
             GameObject newObject = poolDictionary[tag].Dequeue();
 
+            Debug.Log("Spawing Object");
             newObject.SetActive(true);
             newObject.transform.position = position;
             newObject.transform.rotation = rotation;
